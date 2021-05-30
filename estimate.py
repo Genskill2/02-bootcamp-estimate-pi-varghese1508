@@ -1,5 +1,30 @@
 import math
 import unittest
+import random
+
+# my solution:
+
+def wallis(n):
+    piBy2 = (4/3)
+
+    if n==1:
+        return piBy2
+    
+    for i in range(2,n+1):
+        piBy2 = piBy2 * (4*(i**2)/(4*(i**2) - 1))
+    
+    return (piBy2*2)
+
+
+def monte_carlo(n):
+    inCir=0 # no of darts inside circle
+
+    for i in range(n):
+        if (random.random()**2 + random.random()**2)<1:
+            inCir+=1
+    return (4*inCir/n)
+
+# end of solution
 
 class TestWallis(unittest.TestCase):
     def test_low_iters(self):
